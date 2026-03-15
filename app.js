@@ -39,7 +39,7 @@
 
 const CONFIG = {
   // API endpoint
-  GROQ_API_ENDPOINT: 'https://api.groq.com/openai/v1/chat/completions',
+  GROQ_API_ENDPOINT: '/.netlify/functions/groq-proxy',
 
   // Model — llama-3.3-70b-versatile is fast and highly capable
   MODEL: 'llama-3.3-70b-versatile',
