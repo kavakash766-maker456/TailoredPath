@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — ResumeAI</title>
+  <meta name="description" content="Learn about ResumeAI — the AI-powered tool that tailors your resume and cover letter to any job description instantly." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Syne','sans-serif'], body: ['DM Sans','sans-serif'] },
+          colors: {
+            electric: { 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7' },
+            emerald: { 400: '#34d399', 500: '#10b981' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background-color: #060b18; }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+    .grid-bg {
+      background-image: linear-gradient(rgba(14,165,233,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(14,165,233,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .card-border { background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(16,185,129,0.05), rgba(14,165,233,0.08)); border-radius: 16px; padding: 1px; }
+    .card-inner { background: #0b1426; border-radius: 15px; }
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#0ea5e9; transition:width 0.25s ease; }
+    .nav-link:hover::after { width:100%; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0b1426; }
+    ::-webkit-scrollbar-thumb { background: #243868; border-radius: 3px; }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen grid-bg">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/60 backdrop-blur-xl bg-slate-950/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-electric-500 to-emerald-500 flex items-center justify-center text-white font-display font-bold text-sm">R</div>
+          <span class="font-display font-700 text-lg text-white">Resume<span class="text-electric-400">AI</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-7">
+          <a href="index.html" class="nav-link text-sm text-electric-400">Tool</a>
+          <a href="about.html" class="nav-link text-sm text-slate-200">About</a>
+          <a href="contact.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors">Contact</a>
+          <a href="privacy.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors">Privacy</a>
+          <a href="terms.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors">Terms</a>
+        </nav>
+        <a href="index.html" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-electric-600 hover:bg-electric-500 text-white text-sm font-medium transition-colors shadow-lg">
+          Try the Tool →
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative pt-20 pb-16 overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-electric-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric-500/25 bg-electric-500/10 text-electric-400 text-xs font-medium mb-6">
+        Our Mission
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl font-800 text-white leading-tight mb-5">
+        Built for the Modern<br/>
+        <span class="bg-gradient-to-r from-electric-400 to-emerald-400 bg-clip-text text-transparent">Job Seeker</span>
+      </h1>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+        ResumeAI was created to eliminate the hours candidates spend manually tailoring applications — and level the playing field with anyone who has access to a professional resume writer.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="card-border">
+      <div class="card-inner p-8 sm:p-12">
+        <h2 class="font-display font-700 text-2xl text-white mb-5">The Problem We Solve</h2>
+        <div class="space-y-4 text-slate-400 leading-relaxed">
+          <p>
+            The modern job market is ruthless. Applicant Tracking Systems (ATS) automatically screen out 75% of resumes before a human ever reads them — often because the resume lacks the exact keywords and phrases the employer searched for.
+          </p>
+          <p>
+            Top candidates pay $200–$500 for a professional resume writer to tailor each application. Everyone else sends generic resumes and wonders why they never hear back.
+          </p>
+          <p>
+            <span class="text-white font-medium">ResumeAI changes that.</span> By combining state-of-the-art language models (Meta's Llama 3.3 70B, running on Groq's lightning-fast inference infrastructure) with expert-level resume writing prompts, we give every job seeker the same advantage as a professional career coach.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES GRID -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <h2 class="font-display font-700 text-2xl text-white mb-8 text-center">What We Stand For</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <div class="card-border">
+        <div class="card-inner p-6">
+          <div class="w-10 h-10 rounded-xl bg-electric-500/15 border border-electric-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-electric-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-display font-600 text-white text-base mb-2">Privacy First</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Your resume data is sent directly to Groq's API. We never store, log, or sell your personal information.</p>
+        </div>
+      </div>
+
+      <div class="card-border">
+        <div class="card-inner p-6">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-display font-600 text-white text-base mb-2">Lightning Fast</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Groq's custom LPU hardware runs Llama 3.3 70B at speeds that make other inference providers feel slow. Results in seconds, not minutes.</p>
+        </div>
+      </div>
+
+      <div class="card-border">
+        <div class="card-inner p-6">
+          <div class="w-10 h-10 rounded-xl bg-electric-500/15 border border-electric-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-electric-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-display font-600 text-white text-base mb-2">Expert Quality</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Our prompts are engineered around real hiring manager and ATS best practices — STAR method, quantified achievements, keyword mirroring.</p>
+        </div>
+      </div>
+
+      <div class="card-border">
+        <div class="card-inner p-6">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+          </div>
+          <h3 class="font-display font-600 text-white text-base mb-2">Open & Transparent</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">We use your own Groq API key. You can verify exactly what data is sent — it goes directly from your browser to Groq. No middleman.</p>
+        </div>
+      </div>
+
+      <div class="card-border">
+        <div class="card-inner p-6">
+          <div class="w-10 h-10 rounded-xl bg-electric-500/15 border border-electric-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-electric-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-display font-600 text-white text-base mb-2">Accessible</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Groq offers a free API tier. We want anyone — regardless of budget — to have access to professional-quality career tools.</p>
+        </div>
+      </div>
+
+      <div class="card-border">
+        <div class="card-inner p-6">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <h3 class="font-display font-600 text-white text-base mb-2">Developer Friendly</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Built with pure HTML, Tailwind CSS, and Vanilla JS — zero frameworks, zero build tools. Easy to self-host, fork, and customize.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="card-border">
+      <div class="card-inner p-8 sm:p-10">
+        <h2 class="font-display font-700 text-xl text-white mb-6">Technology Stack</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="text-center p-4 rounded-xl bg-slate-800/40 border border-slate-700/40">
+            <div class="text-2xl mb-1">🦙</div>
+            <div class="text-xs font-medium text-slate-300">Llama 3.3 70B</div>
+            <div class="text-xs text-slate-600 mt-0.5">by Meta AI</div>
+          </div>
+          <div class="text-center p-4 rounded-xl bg-slate-800/40 border border-slate-700/40">
+            <div class="text-2xl mb-1">⚡</div>
+            <div class="text-xs font-medium text-slate-300">Groq LPU</div>
+            <div class="text-xs text-slate-600 mt-0.5">Inference Engine</div>
+          </div>
+          <div class="text-center p-4 rounded-xl bg-slate-800/40 border border-slate-700/40">
+            <div class="text-2xl mb-1">🎨</div>
+            <div class="text-xs font-medium text-slate-300">Tailwind CSS</div>
+            <div class="text-xs text-slate-600 mt-0.5">v3 via CDN</div>
+          </div>
+          <div class="text-center p-4 rounded-xl bg-slate-800/40 border border-slate-700/40">
+            <div class="text-2xl mb-1">🌐</div>
+            <div class="text-xs font-medium text-slate-300">Vanilla JS</div>
+            <div class="text-xs text-slate-600 mt-0.5">No Framework</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/60 bg-slate-950/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-electric-500 to-emerald-500 flex items-center justify-center text-white font-display font-bold text-xs">R</div>
+          <span class="font-display font-700 text-base text-white">Resume<span class="text-electric-400">AI</span></span>
+        </div>
+        <nav class="flex flex-wrap items-center justify-center gap-6">
+          <a href="about.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">About</a>
+          <a href="privacy.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Terms of Service</a>
+          <a href="contact.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Contact</a>
+        </nav>
+        <p class="text-xs text-slate-600">&copy; <script>document.write(new Date().getFullYear())</script> ResumeAI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

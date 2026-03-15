@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResumeAI — Tailor Your Application Instantly</title>
+  <meta name="description" content="AI-powered resume and cover letter tailoring. Paste a job description and your resume — get a perfectly matched application in seconds." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+          },
+          colors: {
+            slate: {
+              950: '#060b18',
+              900: '#0b1426',
+              800: '#111f3a',
+              700: '#1a2d52',
+              600: '#243868',
+            },
+            electric: {
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            },
+            emerald: {
+              400: '#34d399',
+              500: '#10b981',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'slide-up': 'slideUp 0.4s ease-out',
+          },
+          keyframes: {
+            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            slideUp: { '0%': { opacity: '0', transform: 'translateY(16px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background-color: #060b18; }
+    h1, h2, h3, h4, .font-display { font-family: 'Syne', sans-serif; }
+
+    /* Grid pattern overlay */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(14, 165, 233, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* Glow effects */
+    .glow-blue { box-shadow: 0 0 40px rgba(14, 165, 233, 0.15), 0 0 80px rgba(14, 165, 233, 0.05); }
+    .glow-emerald { box-shadow: 0 0 40px rgba(16, 185, 129, 0.15); }
+    .btn-glow:hover { box-shadow: 0 0 24px rgba(14, 165, 233, 0.45), 0 4px 20px rgba(14, 165, 233, 0.25); }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0b1426; }
+    ::-webkit-scrollbar-thumb { background: #243868; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+
+    /* Textarea focus ring */
+    textarea:focus { outline: none; box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.4), 0 0 20px rgba(14, 165, 233, 0.1); }
+
+    /* Result prose styling */
+    #result-content h1, #result-content h2, #result-content h3 {
+      font-family: 'Syne', sans-serif;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    #result-content strong { color: #e2e8f0; }
+    #result-content ul { list-style: none; padding-left: 0; }
+    #result-content ul li::before { content: "▸ "; color: #0ea5e9; }
+    #result-content ul li { margin-bottom: 0.4rem; }
+    #result-content p { margin-bottom: 0.75rem; line-height: 1.7; }
+
+    /* Spinner */
+    .spinner {
+      width: 20px; height: 20px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Toast */
+    #toast {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+    #toast.hide { opacity: 0; transform: translateY(20px); }
+
+    /* Nav underline */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: #0ea5e9;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Card border gradient */
+    .card-border {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(16, 185, 129, 0.05), rgba(14, 165, 233, 0.1));
+      border-radius: 16px;
+      padding: 1px;
+    }
+    .card-inner { background: #0b1426; border-radius: 15px; }
+
+    /* Tab active state */
+    .tab-btn.active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: white;
+      box-shadow: 0 0 16px rgba(14, 165, 233, 0.35);
+    }
+    .tab-btn:not(.active) { color: #64748b; }
+    .tab-btn:not(.active):hover { color: #94a3b8; background: rgba(14, 165, 233, 0.07); }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen grid-bg">
+
+  <!-- ══════════════════ HEADER ══════════════════ -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/60 backdrop-blur-xl bg-slate-950/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-electric-500 to-emerald-500 flex items-center justify-center text-white font-display font-bold text-sm shadow-lg">R</div>
+          <span class="font-display font-700 text-lg tracking-tight text-white">Resume<span class="text-electric-400">AI</span></span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-7">
+          <a href="about.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors duration-200">About</a>
+          <a href="contact.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors duration-200">Contact</a>
+          <a href="privacy.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors duration-200">Privacy</a>
+          <a href="terms.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors duration-200">Terms</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 py-3 space-y-1">
+        <a href="about.html" class="block px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+        <a href="contact.html" class="block px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+        <a href="privacy.html" class="block px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">Privacy</a>
+        <a href="terms.html" class="block px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">Terms</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <section class="relative overflow-hidden pt-16 pb-10">
+    <!-- Ambient glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-electric-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-20 left-1/4 w-[300px] h-[200px] bg-emerald-500/6 rounded-full blur-[80px] pointer-events-none"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric-500/25 bg-electric-500/10 text-electric-400 text-xs font-medium tracking-wide mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-slow"></span>
+        Powered by Llama 3.3 · 70B — Groq Inference
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-800 text-white leading-tight tracking-tight mb-5">
+        Land the Interview.<br/>
+        <span class="bg-gradient-to-r from-electric-400 to-emerald-400 bg-clip-text text-transparent">Tailored in Seconds.</span>
+      </h1>
+      <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+        Paste a job description and your resume. Our AI rewrites your bullets and cover letter to match exactly what the employer is looking for.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════ MAIN TOOL ══════════════════ -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+
+    <!-- Error Banner -->
+    <div id="error-banner" class="hidden mb-6 animate-slide-up">
+      <div class="flex items-start gap-3 p-4 rounded-xl bg-red-950/40 border border-red-500/30 text-red-300">
+        <svg class="w-5 h-5 mt-0.5 shrink-0 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+        <div>
+          <p id="error-title" class="font-semibold text-red-300 text-sm">Something went wrong</p>
+          <p id="error-message" class="text-red-400/80 text-sm mt-0.5"></p>
+        </div>
+        <button onclick="document.getElementById('error-banner').classList.add('hidden')" class="ml-auto text-red-500 hover:text-red-300 transition-colors">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- API Key Notice -->
+    <div id="api-key-notice" class="mb-6 animate-slide-up">
+      <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-950/30 border border-amber-500/30">
+        <svg class="w-5 h-5 mt-0.5 shrink-0 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+        <div class="flex-1">
+          <p class="font-semibold text-amber-300 text-sm">API Key Required</p>
+          <p class="text-amber-400/70 text-sm mt-0.5">Enter your <a href="https://console.groq.com" target="_blank" class="underline hover:text-amber-300">Groq API key</a> below to use the tool. Your key is never stored or sent anywhere except directly to Groq.</p>
+        </div>
+      </div>
+      <div class="mt-3 flex gap-2">
+        <input id="api-key-input" type="password" placeholder="gsk_••••••••••••••••••••••••••••••••••••••••••••••••••••••••••" class="flex-1 bg-slate-800/60 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 focus:border-electric-500/60 transition-colors" />
+        <button onclick="saveApiKey()" class="px-5 py-2.5 bg-electric-600 hover:bg-electric-500 text-white text-sm font-medium rounded-xl transition-colors">Save Key</button>
+      </div>
+    </div>
+
+    <!-- Mode Selector -->
+    <div class="mb-6">
+      <div class="inline-flex p-1 rounded-xl bg-slate-800/50 border border-slate-700/50 gap-1">
+        <button id="tab-resume" class="tab-btn active font-display font-600 text-sm px-5 py-2.5 rounded-lg transition-all duration-200" onclick="setMode('resume')">
+          ✦ Optimize Resume Bullets
+        </button>
+        <button id="tab-cover" class="tab-btn font-display font-600 text-sm px-5 py-2.5 rounded-lg transition-all duration-200" onclick="setMode('cover')">
+          ✦ Generate Cover Letter
+        </button>
+      </div>
+    </div>
+
+    <!-- Input Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+
+      <!-- Job Description -->
+      <div class="card-border">
+        <div class="card-inner p-5">
+          <div class="flex items-center justify-between mb-3">
+            <label class="font-display font-600 text-sm text-slate-200 flex items-center gap-2">
+              <span class="w-5 h-5 rounded bg-electric-500/20 border border-electric-500/30 flex items-center justify-center text-electric-400 text-xs">1</span>
+              Target Job Description
+            </label>
+            <span id="jd-counter" class="text-xs text-slate-600 tabular-nums">0 / 8000</span>
+          </div>
+          <textarea
+            id="job-description"
+            maxlength="8000"
+            rows="14"
+            placeholder="Paste the full job posting here — include title, responsibilities, requirements, and any keywords you can find. The more detail, the better the match..."
+            class="w-full bg-slate-900/70 border border-slate-700/60 rounded-xl px-4 py-3.5 text-sm text-slate-200 placeholder-slate-600 resize-none transition-all duration-200 leading-relaxed"
+            oninput="updateCounter('job-description','jd-counter',8000)"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Resume -->
+      <div class="card-border">
+        <div class="card-inner p-5">
+          <div class="flex items-center justify-between mb-3">
+            <label class="font-display font-600 text-sm text-slate-200 flex items-center gap-2">
+              <span class="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs">2</span>
+              Your Resume / Experience
+            </label>
+            <span id="resume-counter" class="text-xs text-slate-600 tabular-nums">0 / 8000</span>
+          </div>
+          <textarea
+            id="resume-content"
+            maxlength="8000"
+            rows="14"
+            placeholder="Paste your current resume text, work experience, or key accomplishments here. Include your job titles, companies, dates, and bullet points..."
+            class="w-full bg-slate-900/70 border border-slate-700/60 rounded-xl px-4 py-3.5 text-sm text-slate-200 placeholder-slate-600 resize-none transition-all duration-200 leading-relaxed"
+            oninput="updateCounter('resume-content','resume-counter',8000)"
+          ></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Action Button -->
+    <div class="flex justify-center mb-10">
+      <button
+        id="tailor-btn"
+        onclick="tailorApplication()"
+        class="btn-glow group relative inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-electric-600 to-electric-500 hover:from-electric-500 hover:to-electric-400 text-white font-display font-700 text-base rounded-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+      >
+        <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <span id="btn-text">Tailor My Application</span>
+        <span id="btn-spinner" class="hidden spinner"></span>
+      </button>
+    </div>
+
+    <!-- Result Box -->
+    <div id="result-wrapper" class="hidden animate-slide-up">
+      <div class="card-border glow-blue">
+        <div class="card-inner">
+          <!-- Result Header -->
+          <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-slow"></div>
+              <span id="result-label" class="font-display font-600 text-sm text-slate-200">Tailored Output</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <!-- Model badge -->
+              <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-electric-500/10 border border-electric-500/20 text-electric-400 text-xs font-medium">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                llama-3.3-70b
+              </span>
+              <!-- Copy Button -->
+              <button id="copy-btn" onclick="copyResult()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-700/60 hover:bg-slate-700 border border-slate-600/50 hover:border-slate-500 text-slate-300 hover:text-white text-xs font-medium transition-all duration-200">
+                <svg id="copy-icon" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                Copy to Clipboard
+              </button>
+            </div>
+          </div>
+
+          <!-- Result Content -->
+          <div id="result-content" class="px-6 py-6 text-slate-300 text-sm leading-relaxed min-h-[200px]"></div>
+
+          <!-- Result Footer -->
+          <div class="px-6 py-3 border-t border-slate-800 flex items-center justify-between">
+            <p class="text-xs text-slate-600">AI-generated content — review before submitting.</p>
+            <button onclick="clearResults()" class="text-xs text-slate-600 hover:text-slate-400 transition-colors">Clear &amp; Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section class="mt-20 mb-10">
+      <div class="text-center mb-10">
+        <h2 class="font-display font-700 text-2xl sm:text-3xl text-white mb-3">How It Works</h2>
+        <p class="text-slate-500 text-sm max-w-xl mx-auto">Three steps to a perfectly matched application.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="card-border group hover:scale-[1.02] transition-transform duration-300">
+          <div class="card-inner p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-2xl bg-electric-500/15 border border-electric-500/20 flex items-center justify-center text-electric-400 text-xl font-display font-800">01</div>
+            <h3 class="font-display font-600 text-white text-base mb-2">Paste the JD</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Drop in the full job description — responsibilities, requirements, everything.</p>
+          </div>
+        </div>
+        <div class="card-border group hover:scale-[1.02] transition-transform duration-300">
+          <div class="card-inner p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-display font-800">02</div>
+            <h3 class="font-display font-600 text-white text-base mb-2">Add Your Resume</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Paste your current resume or raw work experience notes.</p>
+          </div>
+        </div>
+        <div class="card-border group hover:scale-[1.02] transition-transform duration-300">
+          <div class="card-inner p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-2xl bg-electric-500/15 border border-electric-500/20 flex items-center justify-center text-electric-400 text-xl font-display font-800">03</div>
+            <h3 class="font-display font-600 text-white text-base mb-2">Get Tailored Output</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Receive ATS-optimized bullets or a compelling cover letter in seconds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="border-t border-slate-800/60 bg-slate-950/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-electric-500 to-emerald-500 flex items-center justify-center text-white font-display font-bold text-xs">R</div>
+          <span class="font-display font-700 text-base text-white">Resume<span class="text-electric-400">AI</span></span>
+        </div>
+        <nav class="flex flex-wrap items-center justify-center gap-6">
+          <a href="about.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">About</a>
+          <a href="privacy.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Terms of Service</a>
+          <a href="contact.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Contact</a>
+        </nav>
+        <p class="text-xs text-slate-600">&copy; <span id="footer-year"></span> ResumeAI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hide fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-5 py-3 rounded-2xl bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-sm font-medium shadow-2xl backdrop-blur-xl pointer-events-none">
+    <svg class="w-4 h-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+    Copied to clipboard!
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Footer year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — ResumeAI</title>
+  <meta name="description" content="Get in touch with ResumeAI — feedback, bug reports, feature requests, or partnership inquiries." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Syne','sans-serif'], body: ['DM Sans','sans-serif'] },
+          colors: {
+            electric: { 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7' },
+            emerald: { 400: '#34d399', 500: '#10b981' }
+          },
+          keyframes: {
+            slideUp: { '0%': { opacity: '0', transform: 'translateY(12px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+          },
+          animation: { 'slide-up': 'slideUp 0.4s ease-out' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background-color: #060b18; }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+    .grid-bg {
+      background-image: linear-gradient(rgba(14,165,233,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(14,165,233,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .card-border { background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(16,185,129,0.05), rgba(14,165,233,0.08)); border-radius: 16px; padding: 1px; }
+    .card-inner { background: #0b1426; border-radius: 15px; }
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#0ea5e9; transition:width 0.25s ease; }
+    .nav-link:hover::after { width:100%; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0b1426; }
+    ::-webkit-scrollbar-thumb { background: #243868; border-radius: 3px; }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.35), 0 0 16px rgba(14, 165, 233, 0.08);
+    }
+    .btn-glow:hover { box-shadow: 0 0 24px rgba(14, 165, 233, 0.4), 0 4px 16px rgba(14, 165, 233, 0.2); }
+    .field-label { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+    .field-input {
+      width: 100%;
+      background: rgba(17, 31, 58, 0.7);
+      border: 1px solid rgba(30, 58, 108, 0.8);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      transition: border-color 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .field-input::placeholder { color: #334155; }
+    .field-input:focus { border-color: rgba(14, 165, 233, 0.5); }
+    .field-input:hover:not(:focus) { border-color: rgba(30, 58, 108, 1); }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen grid-bg">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/60 backdrop-blur-xl bg-slate-950/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-electric-500 to-emerald-500 flex items-center justify-center text-white font-display font-bold text-sm">R</div>
+          <span class="font-display font-700 text-lg text-white">Resume<span class="text-electric-400">AI</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-7">
+          <a href="index.html" class="nav-link text-sm text-electric-400">Tool</a>
+          <a href="about.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors">About</a>
+          <a href="contact.html" class="nav-link text-sm text-slate-200">Contact</a>
+          <a href="privacy.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors">Privacy</a>
+          <a href="terms.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors">Terms</a>
+        </nav>
+        <a href="index.html" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-electric-600 hover:bg-electric-500 text-white text-sm font-medium transition-colors shadow-lg">
+          Try the Tool →
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="relative pt-16 pb-10 overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-electric-500/8 rounded-full blur-[80px] pointer-events-none"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric-500/25 bg-electric-500/10 text-electric-400 text-xs font-medium mb-4">
+        Get in Touch
+      </div>
+      <h1 class="font-display text-3xl sm:text-4xl font-700 text-white mb-3">We'd Love to Hear From You</h1>
+      <p class="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">Bug reports, feature requests, feedback, or partnership ideas — drop us a message.</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+
+      <!-- Contact Info Sidebar -->
+      <div class="lg:col-span-2 space-y-4">
+
+        <div class="card-border">
+          <div class="card-inner p-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-electric-500/15 border border-electric-500/20 flex items-center justify-center shrink-0">
+                <svg class="w-4.5 h-4.5 text-electric-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-600 text-sm text-white mb-1">Email Us</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">For general inquiries, feedback, or bug reports. We aim to respond within 48 hours.</p>
+                <a href="mailto:hello@resumeai.example.com" class="text-electric-400 text-xs hover:text-electric-300 transition-colors mt-1 inline-block">hello@resumeai.example.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-border">
+          <div class="card-inner p-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                <svg class="w-4.5 h-4.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-600 text-sm text-white mb-1">Report a Bug</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">Found something broken? Use the contact form and include "Bug Report" in the subject. Screenshots are helpful.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-border">
+          <div class="card-inner p-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-electric-500/15 border border-electric-500/20 flex items-center justify-center shrink-0">
+                <svg class="w-4.5 h-4.5 text-electric-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-600 text-sm text-white mb-1">Feature Ideas</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">Have an idea that would make ResumeAI better? We read every suggestion and incorporate the best ones.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-border">
+          <div class="card-inner p-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                <svg class="w-4.5 h-4.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-600 text-sm text-white mb-1">Partnerships</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">Career coaches, platforms, or companies interested in integrating ResumeAI into their workflow.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Contact Form -->
+      <div class="lg:col-span-3">
+        <div class="card-border">
+          <div class="card-inner p-7 sm:p-9">
+
+            <!-- Success Message -->
+            <div id="success-message" class="hidden animate-slide-up">
+              <div class="text-center py-10">
+                <div class="w-16 h-16 mx-auto mb-5 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
+                  <svg class="w-7 h-7 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h3 class="font-display font-700 text-xl text-white mb-2">Message Sent!</h3>
+                <p class="text-slate-400 text-sm max-w-xs mx-auto leading-relaxed">Thank you for reaching out. We'll get back to you within 48 hours.</p>
+                <button onclick="resetForm()" class="mt-6 px-5 py-2.5 rounded-xl bg-slate-700/50 hover:bg-slate-700 border border-slate-600/50 text-slate-300 text-sm font-medium transition-colors">
+                  Send Another Message
+                </button>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <div id="contact-form-wrapper">
+              <h2 class="font-display font-700 text-xl text-white mb-6">Send a Message</h2>
+
+              <!-- Form Error -->
+              <div id="form-error" class="hidden mb-5 flex items-center gap-3 p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 text-red-300 text-sm">
+                <svg class="w-4 h-4 shrink-0 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+                <span id="form-error-text">Please fill in all required fields.</span>
+              </div>
+
+              <div class="space-y-5">
+
+                <!-- Name + Email row -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label class="field-label" for="contact-name">Name <span class="text-red-400">*</span></label>
+                    <input class="field-input" id="contact-name" type="text" placeholder="Jane Smith" autocomplete="name" />
+                  </div>
+                  <div>
+                    <label class="field-label" for="contact-email">Email <span class="text-red-400">*</span></label>
+                    <input class="field-input" id="contact-email" type="email" placeholder="jane@example.com" autocomplete="email" />
+                  </div>
+                </div>
+
+                <!-- Subject -->
+                <div>
+                  <label class="field-label" for="contact-subject">Subject <span class="text-red-400">*</span></label>
+                  <select class="field-input" id="contact-subject">
+                    <option value="" disabled selected>Select a topic...</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="bug">Bug Report</option>
+                    <option value="feature">Feature Request</option>
+                    <option value="feedback">Feedback / Suggestions</option>
+                    <option value="partnership">Partnership Inquiry</option>
+                    <option value="privacy">Privacy / Data Concern</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <!-- Message -->
+                <div>
+                  <label class="field-label" for="contact-message">Message <span class="text-red-400">*</span></label>
+                  <textarea
+                    class="field-input resize-none"
+                    id="contact-message"
+                    rows="6"
+                    placeholder="Describe your question, feedback, or request in detail. For bug reports, please include what you were doing when the error occurred and any error messages you saw."
+                    maxlength="3000"
+                    oninput="updateMsgCounter()"
+                  ></textarea>
+                  <div class="flex justify-end mt-1">
+                    <span id="msg-counter" class="text-xs text-slate-600 tabular-nums">0 / 3000</span>
+                  </div>
+                </div>
+
+                <!-- Consent -->
+                <div class="flex items-start gap-3">
+                  <div class="relative mt-0.5">
+                    <input id="contact-consent" type="checkbox" class="w-4 h-4 rounded border-slate-600 bg-slate-800 text-electric-500 focus:ring-electric-500 focus:ring-offset-slate-900 cursor-pointer" />
+                  </div>
+                  <label for="contact-consent" class="text-xs text-slate-500 leading-relaxed cursor-pointer">
+                    I agree that my submitted data is collected and stored as described in the <a href="privacy.html" class="text-electric-400 hover:text-electric-300 underline">Privacy Policy</a>. I understand this form is a demo and may not be connected to a live backend.
+                  </label>
+                </div>
+
+                <!-- Submit -->
+                <button
+                  id="submit-btn"
+                  onclick="submitForm()"
+                  class="btn-glow w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-gradient-to-r from-electric-600 to-electric-500 hover:from-electric-500 hover:to-electric-400 text-white font-display font-600 text-sm rounded-xl transition-all duration-300 shadow-lg"
+                >
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
+                  <span id="submit-btn-text">Send Message</span>
+                </button>
+
+                <p class="text-xs text-slate-600 text-center leading-relaxed">
+                  This is a static demo form. To enable actual email delivery, connect it to a service like <a href="https://formspree.io" target="_blank" class="text-slate-500 hover:text-slate-300 underline">Formspree</a>, <a href="https://netlify.com/products/forms/" target="_blank" class="text-slate-500 hover:text-slate-300 underline">Netlify Forms</a>, or a serverless email API.
+                </p>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/60 bg-slate-950/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-electric-500 to-emerald-500 flex items-center justify-center text-white font-display font-bold text-xs">R</div>
+          <span class="font-display font-700 text-base text-white">Resume<span class="text-electric-400">AI</span></span>
+        </div>
+        <nav class="flex flex-wrap items-center justify-center gap-6">
+          <a href="about.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">About</a>
+          <a href="privacy.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Terms of Service</a>
+          <a href="contact.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Contact</a>
+        </nav>
+        <p class="text-xs text-slate-600">&copy; <script>document.write(new Date().getFullYear())</script> ResumeAI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function updateMsgCounter() {
+      const ta = document.getElementById('contact-message');
+      const counter = document.getElementById('msg-counter');
+      const count = ta.value.length;
+      counter.textContent = `${count} / 3000`;
+      counter.className = count > 2700
+        ? 'text-xs text-amber-400 tabular-nums'
+        : 'text-xs text-slate-600 tabular-nums';
+    }
+
+    function submitForm() {
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const subject = document.getElementById('contact-subject').value;
+      const message = document.getElementById('contact-message').value.trim();
+      const consent = document.getElementById('contact-consent').checked;
+
+      const errorEl = document.getElementById('form-error');
+      const errorText = document.getElementById('form-error-text');
+
+      // Validate
+      if (!name || !email || !subject || !message) {
+        errorText.textContent = 'Please fill in all required fields before submitting.';
+        errorEl.classList.remove('hidden');
+        errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email)) {
+        errorText.textContent = 'Please enter a valid email address.';
+        errorEl.classList.remove('hidden');
+        return;
+      }
+
+      if (!consent) {
+        errorText.textContent = 'Please accept the data consent checkbox to continue.';
+        errorEl.classList.remove('hidden');
+        return;
+      }
+
+      errorEl.classList.add('hidden');
+
+      // Simulate submission
+      const btn = document.getElementById('submit-btn');
+      const btnText = document.getElementById('submit-btn-text');
+      btn.disabled = true;
+      btnText.textContent = 'Sending...';
+
+      setTimeout(() => {
+        document.getElementById('contact-form-wrapper').classList.add('hidden');
+        document.getElementById('success-message').classList.remove('hidden');
+      }, 900);
+    }
+
+    function resetForm() {
+      document.getElementById('contact-name').value = '';
+      document.getElementById('contact-email').value = '';
+      document.getElementById('contact-subject').value = '';
+      document.getElementById('contact-message').value = '';
+      document.getElementById('contact-consent').checked = false;
+      document.getElementById('msg-counter').textContent = '0 / 3000';
+      document.getElementById('submit-btn').disabled = false;
+      document.getElementById('submit-btn-text').textContent = 'Send Message';
+      document.getElementById('success-message').classList.add('hidden');
+      document.getElementById('contact-form-wrapper').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>

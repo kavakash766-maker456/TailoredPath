@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — ResumeAI</title>
+  <meta name="description" content="ResumeAI Privacy Policy — how we handle your data, API keys, and resume content." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Syne','sans-serif'], body: ['DM Sans','sans-serif'] },
+          colors: {
+            electric: { 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7' },
+            emerald: { 400: '#34d399', 500: '#10b981' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background-color: #060b18; }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+    .grid-bg {
+      background-image: linear-gradient(rgba(14,165,233,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(14,165,233,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .card-border { background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(16,185,129,0.05), rgba(14,165,233,0.08)); border-radius: 16px; padding: 1px; }
+    .card-inner { background: #0b1426; border-radius: 15px; }
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#0ea5e9; transition:width 0.25s ease; }
+    .nav-link:hover::after { width:100%; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0b1426; }
+    ::-webkit-scrollbar-thumb { background: #243868; border-radius: 3px; }
+
+    /* Prose styles for policy content */
+    .policy-prose h2 { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 600; color: #e2e8f0; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(14,165,233,0.15); }
+    .policy-prose h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 600; color: #cbd5e1; margin-top: 1.5rem; margin-bottom: 0.4rem; }
+    .policy-prose p { color: #94a3b8; line-height: 1.8; margin-bottom: 0.9rem; font-size: 0.925rem; }
+    .policy-prose ul { list-style: none; padding: 0; margin-bottom: 1rem; }
+    .policy-prose ul li { color: #94a3b8; font-size: 0.925rem; line-height: 1.7; margin-bottom: 0.35rem; padding-left: 1.2rem; position: relative; }
+    .policy-prose ul li::before { content: "▸"; color: #0ea5e9; position: absolute; left: 0; }
+    .policy-prose a { color: #38bdf8; text-decoration: underline; }
+    .policy-prose a:hover { color: #7dd3fc; }
+    .policy-prose strong { color: #e2e8f0; }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen grid-bg">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/60 backdrop-blur-xl bg-slate-950/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-electric-500 to-emerald-500 flex items-center justify-center text-white font-display font-bold text-sm">R</div>
+          <span class="font-display font-700 text-lg text-white">Resume<span class="text-electric-400">AI</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-7">
+          <a href="index.html" class="nav-link text-sm text-electric-400">Tool</a>
+          <a href="about.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors">About</a>
+          <a href="contact.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors">Contact</a>
+          <a href="privacy.html" class="nav-link text-sm text-slate-200">Privacy</a>
+          <a href="terms.html" class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors">Terms</a>
+        </nav>
+        <a href="index.html" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-electric-600 hover:bg-electric-500 text-white text-sm font-medium transition-colors shadow-lg">
+          Try the Tool →
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="relative pt-16 pb-10 overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-electric-500/8 rounded-full blur-[80px] pointer-events-none"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-electric-500/25 bg-electric-500/10 text-electric-400 text-xs font-medium mb-4">
+        Legal
+      </div>
+      <h1 class="font-display text-3xl sm:text-4xl font-700 text-white mb-3">Privacy Policy</h1>
+      <p class="text-slate-500 text-sm">Last updated: <span class="text-slate-400">January 1, 2025</span></p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="card-border">
+      <div class="card-inner p-8 sm:p-10">
+        <div class="policy-prose">
+
+          <p>This Privacy Policy describes how <strong>ResumeAI</strong> ("we," "us," or "our") handles information when you use our web application at this website (the "Service"). We are committed to protecting your privacy and being transparent about how the tool works.</p>
+          <p><strong>The short version:</strong> We do not collect, store, or share your personal data. Your resume content goes directly from your browser to Groq's API. That's it.</p>
+
+          <h2>1. Information We Do NOT Collect</h2>
+          <p>ResumeAI is a client-side tool. We do not operate a backend server that processes or stores your data. Specifically, we do not collect:</p>
+          <ul>
+            <li>Your name, email address, or any personal identifiers</li>
+            <li>Your resume content or job description text</li>
+            <li>Your Groq API key (it is stored only in your browser's sessionStorage)</li>
+            <li>IP addresses or device fingerprints</li>
+            <li>Usage analytics or behavioral tracking data</li>
+            <li>Cookies for tracking purposes</li>
+          </ul>
+
+          <h2>2. How the Tool Works (Data Flow)</h2>
+          <p>When you click "Tailor My Application," the following happens entirely within your browser:</p>
+          <ul>
+            <li>Your job description text and resume content are read from the on-page text areas</li>
+            <li>A request is constructed and sent <strong>directly from your browser</strong> to the Groq API endpoint (<code>https://api.groq.com</code>)</li>
+            <li>Groq returns a response, which is displayed in your browser</li>
+            <li>No data passes through any ResumeAI server — because no such server exists</li>
+          </ul>
+          <p>This architecture means your sensitive resume data is only ever transmitted between your device and Groq. To understand how Groq handles data, please review <a href="https://groq.com/privacy-policy/" target="_blank">Groq's Privacy Policy</a>.</p>
+
+          <h2>3. API Keys</h2>
+          <p>Your Groq API key is stored in <strong>sessionStorage</strong> in your browser, which means:</p>
+          <ul>
+            <li>It is cleared automatically when you close the browser tab</li>
+            <li>It is never transmitted to our servers (we have none)</li>
+            <li>It is only sent to <code>api.groq.com</code> as part of authenticated API requests</li>
+            <li>Other tabs or websites cannot access your sessionStorage</li>
+          </ul>
+          <p>We strongly recommend never sharing your API key with others and revoking keys you no longer need at <a href="https://console.groq.com" target="_blank">console.groq.com</a>.</p>
+
+          <h2>4. Local Storage and Cookies</h2>
+          <p>ResumeAI does not set any persistent cookies or use localStorage for tracking. We use sessionStorage solely to temporarily hold your Groq API key for the duration of your browser session.</p>
+
+          <h2>5. Third-Party Services</h2>
+          <p>The Service loads the following third-party resources:</p>
+          <ul>
+            <li><strong>Google Fonts</strong> — for typography (Syne, DM Sans). Google may log font requests; see <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+            <li><strong>Tailwind CSS CDN</strong> — a CSS framework loaded from a CDN. No tracking.</li>
+            <li><strong>Groq API</strong> — processes your text inputs when you submit a request. Subject to <a href="https://groq.com/privacy-policy/" target="_blank">Groq's Privacy Policy</a>.</li>
+          </ul>
+
+          <h2>6. Children's Privacy</h2>
+          <p>The Service is not directed to children under the age of 13. We do not knowingly collect personal information from children. If you believe a child has provided personal data, please contact us immediately.</p>
+
+          <h2>7. Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date. Your continued use of the Service after changes constitutes acceptance of the revised policy.</p>
+
+          <h2>8. Contact Us</h2>
+          <p>If you have questions about this Privacy Policy or your data, please <a href="contact.html">contact us</a>.</p>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/60 bg-slate-950/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-electric-500 to-emerald-500 flex items-center justify-center text-white font-display font-bold text-xs">R</div>
+          <span class="font-display font-700 text-base text-white">Resume<span class="text-electric-400">AI</span></span>
+        </div>
+        <nav class="flex flex-wrap items-center justify-center gap-6">
+          <a href="about.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">About</a>
+          <a href="privacy.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Terms of Service</a>
+          <a href="contact.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">Contact</a>
+        </nav>
+        <p class="text-xs text-slate-600">&copy; <script>document.write(new Date().getFullYear())</script> ResumeAI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
